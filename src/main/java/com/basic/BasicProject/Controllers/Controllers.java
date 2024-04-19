@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -28,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/customer")
+@CrossOrigin(origins = "http://localhost:4200")
 public class Controllers {
    
     @Autowired
@@ -52,7 +54,7 @@ public class Controllers {
         return new ResponseEntity<>(customer, HttpStatus.CREATED);
     }
 
-    @PostMapping("/retrieveCustomerInfo")
+    @GetMapping("/retrieveCustomerInfo")
     public List<Customer> postMethodName() {
 
         List<Customer> customer = customerService.retrieveTheCustomer();
